@@ -3,15 +3,14 @@ import axios from "axios";
 import "./index.css";
 
 // components
+import SearchArea from "./components/SearchArea";
 import CreateArea from "./components/CreateArea";
 import TaskList from "./components/TaskList.jsx";
-import OpenCreateArea from "./components/OpenCreateArea";
-import SearchInput from "./components/SearchInput";
 
-const appContext = React.createContext();
+const AppContext = React.createContext();
 
 export const useGlobalContext = () => {
-  return useContext(appContext);
+  return useContext(AppContext);
 };
 
 function App() {
@@ -88,28 +87,27 @@ function App() {
     getTasks();
   }, []);
 
+  const value = {
+    alert,
+    isEditing,
+    editID,
+    tasks,
+    handleSubmit,
+    query,
+    handleQueryChange,
+    taskNameRef,
+    deleteTask,
+    editTask,
+  };
+
   return (
-    <appContext.Provider
-      value={{
-        alert,
-        isEditing,
-        editID,
-        tasks,
-        handleSubmit,
-        query,
-        handleQueryChange,
-        taskNameRef,
-        deleteTask,
-        editTask,
-      }}
-    >
+    <AppContext.Provider value={value}>
       <main>
-        {/* <OpenCreateArea /> */}
-        <SearchInput />
+        <SearchArea />
         <CreateArea />
         <TaskList />
       </main>
-    </appContext.Provider>
+    </AppContext.Provider>
   );
 }
 

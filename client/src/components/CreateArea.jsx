@@ -13,16 +13,7 @@ function CreateArea() {
   } = useGlobalContext();
 
   return (
-    <div
-      className={`${
-        isCreateAreaOpen
-          ? "form-container show-form-container"
-          : "form-container"
-      }`}
-    >
-      {/* <button className="close-btn" onClick={() => setIsCreateAreaOpen(false)}>
-        <i className="fa-solid fa-xmark"></i>x
-      </button> */}
+    <div className="top-section">
       <form className="form" onSubmit={handleSubmit}>
         <p>{alert.msg}</p>
         <div className="form-group">
